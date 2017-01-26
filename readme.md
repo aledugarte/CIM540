@@ -12,8 +12,7 @@ I hope you enjoyed. Or not.
 
 ![This is just a message](Image link goes here)
 
- 
- 
+
 
  
  `this should be code`
