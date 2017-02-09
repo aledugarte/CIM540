@@ -85,7 +85,7 @@ function draw() {
     //console.log(randNum);
     //randNum = random(256);
     //fill(randNum,10,0);
-    arc(width/2,(mouthY + mouthH/2)- 2.5,100,110,0,PI);
+    arc(mapX+width/2,(mouthY + mouthH/2)- 2.5,100,110,0,PI);
     
     ellipse(mouseX,mouseY,10,10);
     

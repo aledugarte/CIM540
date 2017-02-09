@@ -11,7 +11,6 @@ var legY = 450;
 var backgroundColor = '#21409a';
 
 var mapX = 0;
-var mapY = 0;
 
 function setup() {
 
@@ -27,14 +26,11 @@ function draw() {
 
     background (backgroundColor);
     
-    mapX = map(mouseX,0,width,-3,0);
-    mapY = map (mouseY,0,height,-5,5);
+    mapX = map(mouseX,0,width,-10,-2);
+    mapY = map (mouseY,0,height,-10,5);
     
-    mapX2 = map(mouseX,0,width,-10,3);
-    mapY2 = map (mouseY,0,height,-10,10);
-    
-    mapX3 = map(mouseX,0,width,-20,-7);
-    mapY3 = map (mouseY,0,height,-10,10);
+    mapX2 = map(mouseX,0,width,-15,-2);
+    mapY2 = map (mouseY,0,height,-15,13);
     
     
   
@@ -86,7 +82,7 @@ function draw() {
     ellipse (center+50+mapX,eyeY+mapY,50,50);
     
     fill ("white");
-    ellipse (center+55+mapX3, eyeY-5+mapY2,18,18);
+    ellipse (center+55+mapX2, eyeY-5+mapY2,18,18);
     
     //BOW
     fill("red");
