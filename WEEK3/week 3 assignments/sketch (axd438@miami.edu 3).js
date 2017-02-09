@@ -26,14 +26,11 @@ function draw() {
 
     background (backgroundColor);
     
-    mapX = map(mouseX,0,width,-3,0);
-    mapY = map (mouseY,0,height,-5,5);
+    mapX = map(mouseX,0,width,-10,-2);
+    mapY = map (mouseY,0,height,-10,5);
     
-    mapX2 = map(mouseX,0,width,-10,3);
-    mapY2 = map (mouseY,0,height,-10,10);
-    
-    mapX3 = map(mouseX,0,width,-20,-7);
-    mapY3 = map (mouseY,0,height,-10,10);
+    mapX2 = map(mouseX,0,width,-18,-2);
+    mapY2 = map (mouseY,0,height,-16,13);
     
     
   
@@ -85,7 +82,7 @@ function draw() {
     ellipse (center+50+mapX,eyeY+mapY,50,50);
     
     fill ("white");
-    ellipse (center+55+mapX3, eyeY-5+mapY2,18,18);
+    ellipse (center+55+mapX, eyeY-5+mapY,18,18);
     
     //BOW
     fill("red");
