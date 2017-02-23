@@ -1,3 +1,5 @@
+//basic loop
+
 var counter = 0;
 var ballDir = true;
 
