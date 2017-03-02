@@ -33,7 +33,7 @@ function draw() {
 }
 
 function mousePressed(){
-    puppyIndex = puppyChooser();
+    puppyIndex = puppyIndex + 1;
     
 }
 
