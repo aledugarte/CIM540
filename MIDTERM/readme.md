@@ -1,19 +1,19 @@
 
-#Midterm Project
-###Animated personal logo.
+# Midterm Project
+### Animated personal logo.
 
 
 In this project I will create an animated and interactive version of my personal logo. The program will start all in black and then white dots will start appearing reveling then my logo. 
 
 Code Plan
 
-#Input
+# Input
 
 -	Moving the mouse across the image.
 -	mousePressed to change color.
 -	mouseReleased to go back to black.
 
-#Pseudocode
+# Pseudocode
 
 -	Create black canvas.
 -	Random white dots across the screen.
