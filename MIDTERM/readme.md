@@ -5,6 +5,8 @@
 
 In this project I will create an animated and interactive version of my personal logo. The program will start all in black and then white dots will start appearing reveling then my logo. 
 
+To fix: I would like it to start in a white screen and have dots apprear and create my logo.
+
 Code Plan
 
 # Input
