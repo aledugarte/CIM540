@@ -1,33 +1,39 @@
 var i = 0;
-
+var Color = 0;
 
 
 function setup() {
 createCanvas (576,301.64);
-background(255);
+background("BLACK");
+noStroke();
+   
+   
+max_distance = dist(0, 0, width, height);    
     
 
+    
 }
 
 function draw() {
-////background(255);
-//     fill("black");   
-//   ellipse ((arrayx [i]), (arrayy[i]), 15,15);
-//    
-//   if(millis() - prevMillis >= interval){
-//   i++;
-//   console.log(i);
-//   prevMillis = millis();
-//  } 
-//    
-//      if (i == arrayy.length) {
-//     i = 0;
-////     background(255);      
-//      }
-//    
     
-    //Left serif of left sife of A
+
     
+      //    RANDOM DOTS
+     for(var i = 0; i<width; i++){
+        console.log(i);
+        fill(255 );
+         ellipse(int(random(width)), int(random(height)),5,5);
+         
+    
+     }
+    
+  
+    
+    
+
+
+    
+//    Left serif of left sife of A
     fill("black");
     noStroke();
     beginShape();
@@ -37,6 +43,8 @@ function draw() {
     quadraticVertex(91.82,282.15,49.02,282.15 );
     quadraticVertex(49.02,282.15,49.02,274.07);
     endShape();
+    
+   
     
     //right serif of left side of A
     fill("black");
@@ -139,16 +147,40 @@ function draw() {
     bezierVertex(506.36,95.97,492.19,237.01,382.58,282);
     vertex(382.58,274.07);
     bezierVertex(469.36,211.97,467.3,90.07,382.58,31.5);
-    endShape();
-
+    endShape(close);
     
-     for(var i = 0; i<width; i++){
-        console.log(i);
-        fill("black");
-         ellipse(random(width), random(height),1,1);
+    
+    for(var i = 0; i <= width; i += 10) {
+    for(var j = 0; j <= height; j += 10) {
+      var size = dist(mouseX, mouseY, i, j);
+      size = size/max_distance * 10;
+        fill(0);
+      ellipse(i, j, size, size);
     }
-    
-    
+    }
+
+
+  
     
 }
+
+
+
+function mousePressed(){
+    
+   
+    
+    }
+
+
+function mouseReleased(){
+    
+}
+   
+
+
+
+
+    
+
 
