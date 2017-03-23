@@ -1,10 +1,9 @@
 var i = 0;
-var Color = 0;
-
+var value = 0;
 
 function setup() {
 createCanvas (576,301.64);
-background("BLACK");
+background(0);
 noStroke();
    
    
@@ -21,7 +20,7 @@ function draw() {
       //    RANDOM DOTS
      for(var i = 0; i<width; i++){
         console.log(i);
-        fill(255 );
+        fill("white");
          ellipse(int(random(width)), int(random(height)),5,5);
          
     
@@ -34,7 +33,7 @@ function draw() {
 
     
 //    Left serif of left sife of A
-    fill("black");
+    fill(value);
     noStroke();
     beginShape();
     vertex(49.02,274.07);
@@ -47,7 +46,7 @@ function draw() {
    
     
     //right serif of left side of A
-    fill("black");
+    fill (value);
     noStroke();
     beginShape();
     vertex(142.32,274.07);
@@ -59,7 +58,7 @@ function draw() {
     
 
     //shape of the A
-    fill("black");
+    fill(value);
     noStroke();
     beginShape();
     vertex(73.27,282.15);
@@ -74,7 +73,7 @@ function draw() {
     
     
     //middle
-    fill("black");
+    fill(value);
     noStroke();
     beginShape();
     vertex(144.32,144.74);
@@ -87,7 +86,7 @@ function draw() {
 
     
     //left serif of right side
-    fill("black");
+    fill(value);
     noStroke();
     beginShape();
     vertex(251.09,274.07);
@@ -99,7 +98,7 @@ function draw() {
     
     
     //top serif of the D
-    fill("black");
+    fill(value);
     noStroke();
     beginShape();
     vertex(252.87,23.51);
@@ -110,7 +109,7 @@ function draw() {
     endShape();
     
     //D left side body
-    fill("black");
+    fill(value);
     noStroke();
     beginShape();
     vertex(283.3,23.5);
@@ -120,7 +119,7 @@ function draw() {
     endShape();
 
     //top square
-    fill("black");
+    fill(value);
     noStroke();
     beginShape();
     vertex(323.59,23.51)
@@ -130,7 +129,7 @@ function draw() {
     endShape();
     
     //bottom square
-    fill("black");
+    fill(value);
     noStroke();
     beginShape();
     vertex(323.59,274.07);
@@ -140,7 +139,7 @@ function draw() {
     endShape();
     
     //D curve
-    fill("black");
+    fill(value);
     noStroke();
     beginShape();
     vertex(382.58,23.5);
@@ -149,12 +148,13 @@ function draw() {
     bezierVertex(469.36,211.97,467.3,90.07,382.58,31.5);
     endShape(close);
     
+ 
     
     for(var i = 0; i <= width; i += 10) {
     for(var j = 0; j <= height; j += 10) {
       var size = dist(mouseX, mouseY, i, j);
       size = size/max_distance * 10;
-        fill(0);
+        fill(value);
       ellipse(i, j, size, size);
     }
     }
@@ -167,14 +167,22 @@ function draw() {
 
 
 function mousePressed(){
-    
-   
+  if (value==0){
+      value=(100);
+  }else{
+      value = 0;
+  }
+    return false;
     
     }
 
 
 function mouseReleased(){
+    if(value==(100)){
+        value=0;
     
+    
+}
 }
    
 
