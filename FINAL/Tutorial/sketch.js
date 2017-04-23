@@ -12,7 +12,7 @@ function setup() {
   soundFormats('mp3');
   sneeze = loadSound('assets/sneeze.mp3');
 
-  // Create a new doorbell
+  // Create a new button
   
   nose = new Nose(213, 300, 20);
     
@@ -29,20 +29,20 @@ function draw() {
 }
 
 function mousePressed() {
-  // If the user clicks on the doorbell, play the sound!
+  // If the user clicks on the nose, play the sound!
   if (nose.contains(mouseX, mouseY)) {
     sneeze.play();
   }
 }
 
 // (really a button)
-var Nose = function(x_, y_, r_) {
+var Belly = function(x_, y_, r_) {
   // Location and size
   var x = x_;
   var y = y_;
   var r = r_;
 
-  // Is a point inside the doorbell? (used for mouse rollover, etc.)
+  // Is a point inside the nose? (used for mouse rollover, etc.)
   this.contains = function(mx, my) {
     if (dist(mx, my, x, y) < r) {
       return true;
