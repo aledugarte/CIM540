@@ -7,6 +7,10 @@ var stopNight = true;
 var playDay = false;
 var stopDay = true;
 
+var dayBack = true;
+var nightBack = true;
+
+
 var imgMove;
 
 var dot = [];
@@ -30,6 +34,8 @@ function preload (){
     img3 = loadImage("assets/back.png");
     img4 = loadImage("assets/day.png");
     img5 = loadImage("assets/night.png");
+    img6 = loadImage ("assets/sun.png");
+    img7 = loadImage ("assets/moon.png");
     
     
       // Load the sound file.
@@ -46,10 +52,11 @@ function setup() {
 
 
     dot = new Dot(50, 570, 20, "red");
-    dot1 = new Dot(150, 570, 20, "blue");
-    dot2 = new Dot (250,570,20,"yellow");
-
-    max_distance = dist(0, 0, width, height);
+    dot1 = new Dot(150, 570, 20, 'rgba(0,52,221,100)');
+    dot2 = new Dot (250,570,25, ('rgb(255,230,0)'));
+    dot3 = new Dot (300+moveX,350+moveY,15,('rgb(183,9,125)'));
+    
+//    max_distance = dist(0, 0, width, height);
     
 }
 
@@ -60,31 +67,24 @@ function draw() {
 //    fill(204, 120);
 //    rect(0, 0, width, height);
     
-//       if (dot1.contains(mouseX,mouseY)) {
-//        image(img5,0,0,img5.width,img5.height);
-//        playNight = true;
-//           
-//    }else{
-//        tint(255,120);
-//        image(img4,0,0,img4.width,img4.height);  
-//        stopNight = true;
-//       }
-//
-//    if (playNight == true){
-//    playNight = false;
-//    stopNight = false;    
-//    nightSound.play();    
-//    }
-//    
-//    if (stopNight == true){
-//    playNight = false;
-//        stopNight = false;
-//        nightSound.stop();
-//    }
+
     
-    //BACKGROUND
-//    tint(255,120);
-//    image(img4,0,0,img4.width,img4.height);  
+    if (dayBack == true){
+        image(img4, 0,0,img4.width,img4.height)
+    }
+    else{
+        image(img5, 0,0,img5.width,img5.height)
+    }
+    
+        
+       if (nightBack==true){
+        image(img5, 0,0,img5.width,img5.height)
+    }
+    else{
+         image(img4, 0,0,img4.width,img4.height)
+    }
+    
+ 
     tint(255,150);
     image(img3, 0,0,img3.width,img3.height);
     tint(255,200);
@@ -118,12 +118,17 @@ function draw() {
 //    
 
     dot.display(mouseX, mouseY);
+    
+    image(img7,131,534,img7.width/4, img7.height/4);
     dot1.display(mouseX, mouseY);
+    
+    image(img6,214,534,img6.width/4, img6.height/4);
     dot2.display(mouseX,mouseY);
+    dot3.display (mouseX,mouseY);
 
     if (dot.contains(mouseX,mouseY)) {
-        moveX += random(-10, 10);
-        moveY += random(-10, 10);
+        moveX += random(-15, 15);
+        moveY += random(-15, 15);
         
         
     }else{
@@ -136,24 +141,24 @@ function draw() {
     }else{
         musicPlay=false;
     }
- 
+    
+   
 }
 
 
 
 
 function mousePressed() {
-    if (dot.contains(mouseX, mouseY)) {
-        tickle.play();
-    }
-    
-         if (dot1.contains(mouseX,mouseY)) {
-        image(img5,0,0,img5.width,img5.height);
+
+      if (dot1.contains(mouseX,mouseY)) {
+//        image(img5,0,0,img5.width,img5.height);
         playNight = true;
+        nightBack = true;
            
     }else{
-        image(img5,0,0,img5.width,img5.height);
+//        image(img5,0,0,img5.width,img5.height);
         stopNight = true;
+        nightBack = false;
        }
 
     if (playNight == true){
@@ -171,12 +176,14 @@ function mousePressed() {
     
     
         if (dot2.contains(mouseX,mouseY)) {
-        image(img4,0,0,img4.width,img4.height);
+//        image(img4,0,0,img4.width,img4.height);
         playDay = true;
+        dayBack = true;
            
     }else{
-        image(img5,0,0,img5.width,img5.height);
+//        image(img5,0,0,img5.width,img5.height);
         stopDay = true;
+        dayBack = false;
        }
 
     if (playDay == true){
@@ -190,6 +197,10 @@ function mousePressed() {
     playDay = false;
         stopDay = false;
         daySound.stop();
+    }
+    
+    if (dot3.contains(mouseX,mouseY)){
+        tickle.play();
     }
     
 }
@@ -226,5 +237,5 @@ var Dot = function (x_, y_, r_, color_, color1_,color2_) {
         }
         
     };
-};
+}
 
