@@ -7,9 +7,14 @@ var stopNight = true;
 var playDay = false;
 var stopDay = true;
 
+var playTickle = false;
+
+var dark = false;
+
 var dayBack = true;
 var nightBack = true;
 
+var value = 0;
 
 var imgMove;
 
@@ -54,9 +59,10 @@ function setup() {
     dot = new Dot(50, 570, 20, "red");
     dot1 = new Dot(150, 570, 20, 'rgba(0,52,221,100)');
     dot2 = new Dot (250,570,25, ('rgb(255,230,0)'));
-    dot3 = new Dot (300+moveX,350+moveY,15,('rgb(183,9,125)'));
+    dot3 = new Dot (350,570,25,("black"));
+    nose = new Nose (300+moveX,350+moveY,15,('rgb(183,9,125)'));
     
-//    max_distance = dist(0, 0, width, height);
+    max_distance = dist(0, 0, 50, 50);
     
 }
 
@@ -124,7 +130,10 @@ function draw() {
     
     image(img6,214,534,img6.width/4, img6.height/4);
     dot2.display(mouseX,mouseY);
-    dot3.display (mouseX,mouseY);
+    
+    dot3.display(mouseX, mouseY);
+    
+    nose.display (mouseX,mouseY);
 
     if (dot.contains(mouseX,mouseY)) {
         moveX += random(-15, 15);
@@ -136,13 +145,32 @@ function draw() {
         moveY =0;
     }
     
-    if(dot.contains(mouseX,mouseY)){
-        musicPlay=true;
-    }else{
-        musicPlay=false;
+
+    if (dark == true){
+        for(var i = 0; i <= width; i += 10) {
+    for(var j = 0; j <= height; j += 10) {
+      var size = dist(mouseX, mouseY, i, j);
+      size = size/max_distance * 10;
+        fill(value);
+      ellipse(i, j, size, size);
+    }
+    }  
+    } 
+    
+    if (dark == true){
+       if (nose.contains (mouseX, mouseY)){
+           playTickle = true;
+       } 
+        
     }
     
-   
+    if (playTickle == true){
+        playTickle = false;
+        stopTickle = true;
+        tickle.play();
+    }
+  
+    
 }
 
 
@@ -199,8 +227,14 @@ function mousePressed() {
         daySound.stop();
     }
     
-    if (dot3.contains(mouseX,mouseY)){
+    if (nose.contains(mouseX,mouseY)){
         tickle.play();
+    }
+    
+    if (dot3.contains(mouseX,mouseY)){     
+    dark = true;
+    }else{
+    dark = false;    
     }
     
 }
@@ -239,3 +273,32 @@ var Dot = function (x_, y_, r_, color_, color1_,color2_) {
     };
 }
 
+var Nose = function (_x,_y,_r,_color){
+    var x = _x ;
+    var y = _y ;
+    var r = _r;
+    var fillColor = _color;
+    
+    this.contains = function(mx,my){
+          if (dist(mx, my, x, y) < r) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    
+    
+    this.display = function (mx, my){
+        fill (fillColor);
+        stroke(0);
+        strokeWeight(0);
+        ellipse(x+moveX,y+moveY,r,r);
+        
+        if (this.contains(mx, my)) {
+            fill(255, 100)
+            ellipse(x, y, r, r);    
+        }
+        
+    };
+}
