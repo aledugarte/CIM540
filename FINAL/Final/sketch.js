@@ -32,6 +32,9 @@ var currentType = "";
 
 var musicPlay = true;
 
+var buttonY = 560;
+    
+    
 function preload (){
     img0 = loadImage("assets/front.png");
     img1 = loadImage("assets/monster.png");
@@ -41,6 +44,7 @@ function preload (){
     img5 = loadImage("assets/night.png");
     img6 = loadImage ("assets/sun.png");
     img7 = loadImage ("assets/moon.png");
+    img8 = loadImage ("assets/flashlight.png");
     
     
       // Load the sound file.
@@ -52,14 +56,14 @@ function preload (){
 }
 
 function setup() {
-    createCanvas(600, 600);
+    createCanvas(600, 700);
 
 
 
-    dot = new Dot(50, 570, 20, "red");
-    dot1 = new Dot(150, 570, 20, 'rgba(0,52,221,100)');
-    dot2 = new Dot (250,570,25, ('rgb(255,230,0)'));
-    dot3 = new Dot (350,570,25,("black"));
+    dot = new Dot(50, buttonY, 20, "red");
+    dot1 = new Dot(220, buttonY, 15, 'rgba(0,52,221,100)');
+    dot2 = new Dot (410,buttonY,25, ('rgb(255,230,0)'));
+    dot3 = new Dot (550,buttonY,25,("black"));
     nose = new Nose (300+moveX,350+moveY,15,('rgb(183,9,125)'));
     
     max_distance = dist(0, 0, 50, 50);
@@ -70,8 +74,27 @@ function draw() {
     
 //  
 //    background(255);
-//    fill(204, 120);
-//    rect(0, 0, width, height);
+   
+    fill("white");
+    rect(0, 600, width, 100);
+    
+     textSize(32);
+    textStyle (BOLD);
+    fill("red");
+    text("CIMonster",15,630);
+    
+    textSize(14);
+    textStyle (NORMAL);
+    fill ("black");
+    text ("Click on the buttons to play with the CIMonster. Have fun!",25,650);
+    
+     textSize(12);
+    textStyle (ITALIC);
+    fill ("black");
+    text ("P.S. Try his nose!",25,664);
+    
+    
+    
     
 
     
@@ -123,14 +146,19 @@ function draw() {
     ellipse(301+map2X+moveX,273+map2Y+moveY,15,15);
 //    
 
+    //fly
     dot.display(mouseX, mouseY);
     
-    image(img7,131,534,img7.width/4, img7.height/4);
+    //moon
+    image(img7,201,524,img7.width/4, img7.height/4);
     dot1.display(mouseX, mouseY);
     
-    image(img6,214,534,img6.width/4, img6.height/4);
+    //sun
+    image(img6,372,524,img6.width/4, img6.height/4);
     dot2.display(mouseX,mouseY);
     
+    //flashlight
+    image (img8,527,538, img8.width/4, img8.height/4);
     dot3.display(mouseX, mouseY);
     
     nose.display (mouseX,mouseY);
@@ -158,16 +186,20 @@ function draw() {
     } 
     
     if (dark == true){
+        
        if (nose.contains (mouseX, mouseY)){
            playTickle = true;
+           tickle.playMode('sustain');
        } 
+        
+       
         
     }
     
     if (playTickle == true){
+        tickle.play();
         playTickle = false;
         stopTickle = true;
-        tickle.play();
     }
   
     

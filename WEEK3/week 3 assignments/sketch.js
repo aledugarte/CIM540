@@ -1,4 +1,3 @@
-
 var center = 250;
 var bodyY = 330;
 var bodyW = 215;
